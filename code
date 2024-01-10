@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+long long int v[1001], i, j, n, k, p, q, a, b;
+
+int main()
+{
+    ifstream fin("alfa.in");
+    ofstream fout("alfa.out");
+
+    fin >> n >> k;
+
+    for(i = 1; i <= n; i++)
+    {
+        fin >> v[i];
+    }
+
+    for(i = 1; i <= n; i++)
+    {
+        if(v[i] == k)
+        {
+            p = i;
+            j = i + 1;
+            
+            while(j <= n and v[j] != k)
+            {
+                j ++;
+            }
+            
+            if(j <= n)
+            {
+            q = j;
+            
+            for(a = p + 1; a < q - 1; a ++)
+            {
+                for(b = a + 1; b <= q - 1; b ++)
+                {
+                    if(v[a] > v[b])
+                    {
+                        swap(v[a], v[b]);
+                    }
+                }
+            }
+            
+            }
+        }
+    }
+
+    for(i = 1; i <= n; i++)
+    {
+        fout << v[i] << " ";
+    }
+
+    return 0;
+}
